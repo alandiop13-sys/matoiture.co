@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techni Toiture Carcassonne – Devis Gratuit</title>
+<meta name="description" content="Votre toiture a besoin d'attention ? Obtenez un devis gratuit rapidement. Techni Toiture Carcassonne.">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1293033036006691');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1a73e8;
+    --blue-dark: #1557b0;
+    --orange: #e8820a;
+    --black: #111;
+    --white: #fff;
+    --gray: #f4f4f4;
+    --border: #ddd;
+    --text: #222;
+    --muted: #666;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 60px;
+  }
+
+  .logo-text {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #111;
+  }
+
+  .logo-text span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+
+  .google-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .google-badge img {
+    height: 28px;
+  }
+
+  .google-badge .stars {
+    color: #fbbc04;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .google-badge .score {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .google-badge .reviews {
+    font-size: 11px;
+    color: #111;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--black);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    border-right: 1px solid #333;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .trust-item:last-child { border-right: none; }
+
+  .trust-item .icon {
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 48px 20px 0;
+    background: #fff;
+  }
+
+  .hero h1 {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.25;
+    max-width: 760px;
+    margin: 0 auto 32px;
+    color: #111;
+  }
+
+  /* ── FORM CARD ── */
+  .form-wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+    background: #fff;
+  }
+
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .form-body {
+    padding: 28px 28px 20px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 4px;
+    background: #e0e0e0;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--blue);
+    transition: width 0.3s ease;
+  }
+
+  /* Question */
+  .question-label {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--black);
+    line-height: 1.4;
+  }
+
+  /* Radio options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 14px;
+    user-select: none;
+    color: var(--text);
+    background: var(--white);
+  }
+
+  .option:hover { border-color: var(--blue); background: #f0f6ff; }
+  .option.selected { border-color: var(--blue); background: #f0f6ff; }
+
+  .option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--blue);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  /* Text inputs */
+  .field-group { display: flex; flex-direction: column; gap: 14px; }
+
+  .field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.15s;
+    outline: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus {
+    border-color: var(--blue);
+  }
+
+  input::placeholder { color: #aaa; }
+
+  /* Trust badges */
+  .trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 20px;
+  }
+
+  .badge-approved {
+    background: linear-gradient(135deg, #2c2c2c, #444);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-approved .thumb { font-size: 16px; }
+  .badge-shield { font-size: 22px; }
+
+  /* Nav buttons */
+  .form-nav {
+    display: flex;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-prev, .btn-next {
+    flex: 1;
+    padding: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s;
+  }
+
+  .btn-prev {
+    background: var(--blue);
+    color: #fff !important;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .btn-prev:hover { background: var(--blue-dark); }
+
+  .btn-next {
+    background: var(--blue);
+    color: #111;
+  }
+
+  .btn-next:hover { background: var(--blue-dark); }
+
+  .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-submit {
+    flex: 1;
+    padding: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    background: var(--blue);
+    color: #fff !important;
+    transition: background 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-submit:hover { background: var(--blue-dark); }
+
+  /* Step hidden/visible */
+  .step { display: none; }
+  .step.active { display: block; }
+
+  /* ── THANK YOU PAGE ── */
+  #thank-you { display: none; }
+
+  .ty-hero {
+    background: #fff;
+    color: #111;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .ty-hero img { width: 80px; margin-bottom: 24px; }
+
+  .ty-hero h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: #111;
+  }
+
+  .ty-hero p {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #333;
+  }
+
+  .ty-hero .desc {
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 640px;
+    margin: 0 auto;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .ty-trust {
+    text-align: center;
+    padding: 48px 20px;
+    background: #fff;
+  }
+
+  .ty-trust h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    color: #111;
+  }
+
+  .ty-badges {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .ty-badge img { height: 90px; }
+
+  /* ── REVIEWS ── */
+  .reviews-section {
+    background: var(--gray);
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .reviews-section h3 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #111;
+  }
+
+  .reviews-section .sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .google-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    background: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .google-verified .g-logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #4285f4;
+  }
+
+  .google-verified .g-logo span:nth-child(2) { color: #ea4335; }
+  .google-verified .g-logo span:nth-child(3) { color: #fbbc04; }
+  .google-verified .g-logo span:nth-child(4) { color: #4285f4; }
+  .google-verified .g-logo span:nth-child(5) { color: #34a853; }
+  .google-verified .g-logo span:nth-child(6) { color: #ea4335; }
+
+  .stars-row { color: #fbbc04; font-size: 16px; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .review-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .reviewer-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .reviewer-name { font-size: 14px; font-weight: 700; color: var(--black); }
+  .reviewer-meta { font-size: 12px; color: var(--muted); }
+  .review-stars { color: #fbbc04; font-size: 13px; margin-bottom: 8px; }
+  .review-text { font-size: 13px; color: #444; line-height: 1.6; }
+
+  /* ── GALLERY ── */
+  .gallery-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: #fff;
+  }
+
+  .gallery-section h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    color: #111;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: #888;
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 13px;
+  }
+
+  footer img { height: 40px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto; }
+
+  /* ── ERROR ── */
+  .error-msg {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 8px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    header { padding: 12px 16px; }
+    .trust-item { padding: 10px 8px; font-size: 11px; gap: 4px; }
+    .hero { padding: 32px 16px 0; }
+    .form-body { padding: 20px 16px 16px; }
+    .field-row { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .ty-badges { gap: 24px; }
+  }
+
+
+  /* Disqualification overlay */
+  #disq-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  #disq-overlay.show { display: flex; }
+  .disq-box {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 40px 32px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+  }
+  .disq-icon { font-size: 48px; margin-bottom: 16px; }
+  .disq-box h2 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.3; }
+  .disq-box p { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 28px; }
+  .disq-btn {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+  }
+  .disq-btn:hover { background: var(--blue-dark); }
+
+  /* Fade-in animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .step.active { animation: fadeUp 0.25s ease; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     LANDING PAGE
+══════════════════════════════════════ -->
+<div id="landing">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/MA%20TOITURE%20(3).webp" alt="Techni Toiture" style="width:110px;height:110px;object-fit:contain;">
+
+    </div>
+
+    <div class="google-badge">
+      <svg width="72" height="24" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
+        <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/>
+        <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/>
+        <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/>
+        <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/>
+        <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/>
+        <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4"/>
+      </svg>
+      <div class="stars">★★★★★</div>
+      <div class="score">5.0</div>
+      <div class="reviews">Lire nos 68 avis</div>
+    </div>
+  </header>
+
+  <!-- Trust bar -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="icon">★</span> Qualité Garantie</div>
+    <div class="trust-item"><span class="icon">👍</span> Sans Frais Cachés</div>
+    <div class="trust-item"><span class="icon">⏱</span> Devis Rapides</div>
+    <div class="trust-item"><span class="icon">✅</span> Certifié et Assuré</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Votre toiture a besoin d'attention&nbsp;? Obtenez un devis gratuit rapidement</h1>
+  </div>
+
+  <!-- Form -->
+  <div class="form-wrap">
+    <div class="form-card">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress" style="width: 14.28%"></div>
+      </div>
+
+      <form id="quiz-form" novalidate>
+        <div class="form-body">
+
+          <!-- Step 1 -->
+          <div class="step active" data-step="1">
+            <div class="question-label">Question 1 sur 7 : Votre domicile est-il situé à Carcassonne ou à moins de 60 minutes en voiture&nbsp;?</div>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="q1" value="Oui, moins de 60 min de Carcassonne">
+                Oui, mon bien est situé à moins de 60 minutes de Carcassonne
+              </label>
+              <label class="option">
+                <input type="radio" name="q1" value="Non, plus de 60 min de Carcassonne">
+                Non, mon bien est situé à plus de 60 minutes en voiture de Carcassonne
+              </label>
+            </div>
+            <div class="error-msg" id="err1">Veuillez sélectionner une réponse.</div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step" data-step="2">
+            <div class="question-label">Question 2 sur 7 : Êtes-vous propriétaire&nbsp;?</div>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="q2" value="Oui, propriétaire">
+                Oui, je suis propriétaire
+              </label>
+              <label class="option">
+                <input type="radio" name="q2" value="Non, pas propriétaire">
+                Non, je ne suis pas propriétaire
+              </label>
+            </div>
+            <div class="error-msg" id="err2">Veuillez sélectionner une réponse.</div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step" data-step="3">
+            <div class="question-label">Question 3 sur 7 : Quel type de bien décrit votre domicile&nbsp;?</div>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="q3" value="Maison individuelle">
+                Maison individuelle
+              </label>
+              <label class="option">
+                <input type="radio" name="q3" value="Maison mitoyenne">
+                Maison mitoyenne
+              </label>
+            </div>
+            <div class="error-msg" id="err3">Veuillez sélectionner une réponse.</div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step" data-step="4">
+            <div class="question-label">Question 4 sur 7 : Quel type de travaux souhaitez-vous réaliser&nbsp;?</div>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="q4" value="Réparation / Fuite">
+                Réparation / Fuite
+              </label>
+              <label class="option">
+                <input type="radio" name="q4" value="Réfection complète">
+                Réfection complète
+              </label>
+              <label class="option">
+                <input type="radio" name="q4" value="Remplacement toiture">
+                Remplacement toiture
+              </label>
+              <label class="option">
+                <input type="radio" name="q4" value="Nettoyage">
+                Nettoyage
+              </label>
+            </div>
+            <div class="error-msg" id="err4">Veuillez sélectionner une réponse.</div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="step" data-step="5">
+            <div class="question-label">Question 5 sur 7 : Dans quel délai souhaitez-vous réaliser ce projet&nbsp;?</div>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="q5" value="Le plus rapidement possible">
+                Le plus rapidement possible
+              </label>
+              <label class="option">
+                <input type="radio" name="q5" value="Les prochaines semaines">
+                Les prochaines semaines
+              </label>
+              <label class="option">
+                <input type="radio" name="q5" value="Dans 1 mois">
+                Dans 1 mois
+              </label>
+            </div>
+            <div class="error-msg" id="err5">Veuillez sélectionner une réponse.</div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="step" data-step="6">
+            <div class="question-label">Question 6 sur 7 : Quelle est l'adresse de votre projet&nbsp;?</div>
+            <div class="field-group">
+              <div>
+                <label class="field-label">Adresse *</label>
+                <input type="text" id="adresse" name="adresse" placeholder="Adresse*">
+              </div>
+              <div class="field-row">
+                <div>
+                  <label class="field-label">Ville *</label>
+                  <input type="text" id="ville" name="ville" placeholder="Ville*">
+                </div>
+                <div>
+                  <label class="field-label">Code Postal *</label>
+                  <input type="text" id="cp" name="cp" placeholder="Code Postal*" inputmode="numeric" maxlength="5" pattern="[0-9]{5}">
+                </div>
+              </div>
+            </div>
+            <div class="error-msg" id="err6">Veuillez remplir tous les champs.</div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="step" data-step="7">
+            <div class="question-label">Question 7 sur 7 : Quelle est votre prénom, nom, numéro de téléphone et adresse mail&nbsp;?</div>
+            <div class="field-group">
+              <div>
+                <label class="field-label">Prénom *</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom*">
+              </div>
+              <div>
+                <label class="field-label">Nom *</label>
+                <input type="text" id="nom" name="nom" placeholder="Nom*">
+              </div>
+              <div>
+                <label class="field-label">Numéro de téléphone *</label>
+                <input type="tel" id="tel" name="tel" placeholder="Numéro de téléphone*" inputmode="numeric" maxlength="10">
+              </div>
+              <div>
+                <label class="field-label">Email *</label>
+                <input type="email" id="email" name="email" placeholder="Email*">
+              </div>
+            </div>
+            <div class="error-msg" id="err7">Veuillez remplir tous les champs.</div>
+          </div>
+
+        </div><!-- /form-body -->
+
+        <!-- Trust badges -->
+        <div class="trust-badges">
+          <div class="badge-approved">
+            <span class="thumb">👍</span>
+            <span>★★★★★ APPROUVÉ</span>
+          </div>
+          <span class="badge-shield">🛡️</span>
+        </div>
+
+        <!-- Navigation -->
+        <div class="form-nav" id="form-nav">
+          <button type="button" class="btn-prev" id="btn-prev" style="display:none">← Précédent</button>
+          <button type="button" class="btn-next" id="btn-next" style="color:#fff">Suivant →</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div><!-- /landing -->
+
+<!-- ══════════════════════════════════════
+     THANK YOU PAGE
+══════════════════════════════════════ -->
+<div id="thank-you">
+
+  <div class="ty-hero">
+    <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/MA%20TOITURE%20(3).webp" alt="Techni Toiture" style="width:200px;height:200px;object-fit:contain;margin-bottom:16px;">
+    <h2>Merci d'avoir choisi Techni Toiture Carcassonne&nbsp;!</h2>
+    <p>Attendez-vous à recevoir un appel de notre part prochainement&nbsp;!</p>
+    <p class="desc">Nos <strong>prochaines étapes</strong> incluent une visite approfondie par notre expert, une consultation personnalisée axée sur vos besoins, et des explications détaillées sur vos options.</p>
+  </div>
+
+  <div class="ty-trust">
+    <h3>Entreprise de Couverture Certifiée, Fiable &amp; Honnête<br>Avec un Service Entièrement Garanti</h3>
+    <div class="ty-badges">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/ChatGPT_Image_10_f%C3%A9vr._2026__16_32_24__1_-removebg-preview.webp" alt="Entreprise de Confiance France" style="height:110px;object-fit:contain;">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/ChatGPT_Image_10_f%C3%A9vr._2026__16_36_42__1_-removebg-preview.webp" alt="Membre Artisans Couvreurs" style="height:110px;object-fit:contain;">
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <h3>Notés 5/5 sur Google</h3>
+    <p class="sub">Basé sur 68 avis vérifiés</p>
+
+    <div style="margin-bottom:32px;">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/Refais_image_google_photos_a7e47e24e9.webp" alt="Google Avis vérifiés" style="max-width:500px;width:90%;border-radius:8px;">
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:#7b1fa2">A</div>
+          <div>
+            <div class="reviewer-name">Ayse AKBALIK</div>
+            <div class="reviewer-meta">9 avis · il y a 3 mois</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Service très disponible, très rapide et super efficace. Le patron est venu identifier le problème dans notre toiture un dimanche matin ! On l'avait contacté la veille. Il était très professionnel et a su nous expliquer les problèmes d'une manière très pédagogique. Ils sont intervenus dans la semaine même et nos plusieurs problèmes de fuite ont été résolus ! Notre toiture a été réparé d'une telle efficacité ! Un grand merci encore.</div>
+      </div>
+      <div class="review-card">
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:#1565c0">E</div>
+          <div>
+            <div class="reviewer-name">Elodie MATHEY</div>
+            <div class="reviewer-meta">10 avis · il y a un mois</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Nous avons fait appel à cette entreprise pour deux chantiers de toiture, ce sont des personnes de confiance, très réactive avec une conscience professionnelle élevée. Je recommande cette entreprise, vous pouvez les contacter les yeux fermés. Un grand merci pour vos explications claires et rassurantes.</div>
+      </div>
+            <div class="review-card">
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:#2e7d32">M</div>
+          <div>
+            <div class="reviewer-name">Marc DELORME</div>
+            <div class="reviewer-meta">3 avis · il y a 2 semaines</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Intervention rapide et soignée pour une fuite sur ma toiture. Devis honnête, équipe sérieuse. Je recommande sans hésiter.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section">
+    <h3>Galerie de Nos Récents Projets de Toiture</h3>
+    <div class="gallery-grid">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/French_house_rooftop_red_tiles_82c0dc5987.webp" alt="Toiture tuiles rouges" loading="lazy">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/French_house_rooftop_black_slate_d637cda313.webp" alt="Toiture ardoise grise" loading="lazy">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/Aerial_closeup_photo_of_a_french_residential_house_3e200ec538.webp" alt="Toiture rénovée" loading="lazy">
+      <img src="https://alandiop13-sys.github.io/Landing-Page-Techni-Toiture/French_house_rooftop_red_tiles_8fb93ec032.webp" alt="Maison toiture" loading="lazy">
+    </div>
+  </div>
+
+  
+
+</div><!-- /thank-you -->
+
+<!-- Copyright footer on landing -->
+<div style="background:#111;color:#fff;text-align:center;padding:16px;font-size:12px;font-family:'Outfit',sans-serif;">
+  Copyright &copy; 2026 Techni Toiture. Tous droits réservés.
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/FM0KWBA82pHThzHLGx3p/webhook-trigger/hXyY0InnkikoGIxSYkhT'; // ← remplacer plus tard
+
+  let currentStep = 1;
+  const totalSteps = 7;
+  const answers = {};
+
+  const steps     = document.querySelectorAll('.step');
+  const progress  = document.getElementById('progress');
+  const btnPrev   = document.getElementById('btn-prev');
+  const btnNext   = document.getElementById('btn-next');
+  const formNav   = document.getElementById('form-nav');
+
+
+  // Disqualify non-proprietaire
+  document.querySelectorAll('input[name="q2"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.value === 'Non, pas propriétaire') {
+        document.getElementById('disq-overlay').classList.add('show');
+      }
+    });
+  });
+
+  document.getElementById('disq-back-btn').addEventListener('click', () => {
+    document.getElementById('disq-overlay').classList.remove('show');
+    var nonRadio = document.querySelector('input[name="q2"][value="Non, pas propriétaire"]');
+    nonRadio.checked = false;
+    nonRadio.closest('.option').classList.remove('selected');
+  });
+
+
+
+  // Téléphone : chiffres uniquement, 10 max
+  document.getElementById('tel').addEventListener('input', function() {
+    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+  });
+
+  // Code postal : chiffres uniquement, 5 max
+  document.getElementById('cp').addEventListener('input', function() {
+    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
+  });
+
+  // Style radio options on click
+  document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const name = radio.name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+        r.closest('.option').classList.remove('selected');
+      });
+      radio.closest('.option').classList.add('selected');
+      hideError(currentStep);
+    });
+  });
+
+  function showStep(n) {
+    steps.forEach(s => s.classList.remove('active'));
+    document.querySelector(`[data-step="${n}"]`).classList.add('active');
+    progress.style.width = (n / totalSteps * 100) + '%';
+    btnPrev.style.display = n === 1 ? 'none' : 'block';
+    if (n === totalSteps) {
+      btnNext.textContent = '';
+      btnNext.style.display = 'none';
+      // Show submit button
+      let submitBtn = document.getElementById('submit-btn');
+      if (!submitBtn) {
+        submitBtn = document.createElement('button');
+        submitBtn.id = 'submit-btn';
+        submitBtn.type = 'button';
+        submitBtn.className = 'btn-submit';
+        submitBtn.textContent = 'Envoyer →';
+        submitBtn.addEventListener('click', handleSubmit);
+        formNav.appendChild(submitBtn);
+      }
+    } else {
+      btnNext.style.display = 'block';
+      btnNext.textContent = 'Suivant →';
+      const submitBtn = document.getElementById('submit-btn');
+      if (submitBtn) submitBtn.remove();
+    }
+  }
+
+  function hideError(step) {
+    const err = document.getElementById(`err${step}`);
+    if (err) err.classList.remove('show');
+  }
+
+  function validateStep(n) {
+    if (n <= 5) {
+      const checked = document.querySelector(`input[name="q${n}"]:checked`);
+      if (!checked) {
+        document.getElementById(`err${n}`).classList.add('show');
+        return false;
+      }
+      answers[`q${n}`] = checked.value;
+      return true;
+    }
+    if (n === 6) {
+      const a = document.getElementById('adresse').value.trim();
+      const v = document.getElementById('ville').value.trim();
+      const c = document.getElementById('cp').value.trim();
+      const err6 = document.getElementById('err6');
+      if (!a || !v || !c) {
+        err6.textContent = 'Veuillez remplir tous les champs.';
+        err6.classList.add('show'); return false;
+      }
+      if (c.length !== 5) {
+        err6.textContent = 'Le code postal doit contenir 5 chiffres.';
+        err6.classList.add('show'); return false;
+      }
+      answers.adresse = a; answers.ville = v; answers.cp = c;
+      return true;
+    }
+    if (n === 7) {
+      const p = document.getElementById('prenom').value.trim();
+      const no = document.getElementById('nom').value.trim();
+      const t = document.getElementById('tel').value.trim();
+      const e = document.getElementById('email').value.trim();
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+      const err7 = document.getElementById('err7');
+      if (!p || !no || !t || !e) {
+        err7.textContent = 'Veuillez remplir tous les champs.';
+        err7.classList.add('show'); return false;
+      }
+      if (t.length !== 10) {
+        err7.textContent = 'Le numéro de téléphone doit contenir exactement 10 chiffres.';
+        err7.classList.add('show'); return false;
+      }
+      if (!emailValid) {
+        err7.textContent = 'Veuillez entrer une adresse email valide (ex: nom@email.fr).';
+        err7.classList.add('show'); return false;
+      }
+      answers.prenom = p; answers.nom = no; answers.tel = t; answers.email = e;
+      return true;
+    }
+    return true;
+  }
+
+  btnNext.addEventListener('click', () => {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  btnPrev.addEventListener('click', () => {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  async function handleSubmit() {
+    if (!validateStep(7)) return;
+
+    // Show thank you
+    document.getElementById('landing').style.display = 'none';
+    document.getElementById('thank-you').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Send to GHL webhook
+    if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_GHL_WEBHOOK_URL_HERE') {
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: answers.prenom,
+            lastName: answers.nom,
+            phone: answers.tel,
+            email: answers.email,
+            address1: answers.adresse,
+            city: answers.ville,
+            postalCode: answers.cp,
+            zone: answers.q1,
+            proprietaire: answers.q2,
+            typeBien: answers.q3,
+            typeTravaux: answers.q4,
+            delai: answers.q5,
+            source: 'matoiture.co/technitoiture'
+          })
+        });
+      } catch(e) {
+        console.error('Webhook error:', e);
+      }
+    }
+  }
+}); // DOMContentLoaded
+</script>
+
+
+<!-- Disqualification overlay -->
+<div id="disq-overlay">
+  <div class="disq-box">
+    <div class="disq-icon">🏠</div>
+    <h2>Désolé, nous ne pouvons pas vous aider</h2>
+    <p>Notre service est réservé aux <strong style="color:#fff">propriétaires</strong>. Sans être propriétaire du bien, nous ne sommes pas en mesure de réaliser une intervention ou un devis.</p>
+    <button class="disq-btn" id="disq-back-btn">← Modifier ma réponse</button>
+  </div>
+</div>
+
+</body>
+</html>
