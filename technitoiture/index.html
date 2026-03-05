@@ -698,12 +698,30 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnNext  = document.getElementById('btn-next');
   const formNav  = document.getElementById('form-nav');
 
+  // Auto-advance step 3 quand adresse + ville remplis au blur
+  function checkStep3Auto() {
+    if (currentStep !== 3) return;
+    const a = document.getElementById('adresse').value.trim();
+    const v = document.getElementById('ville').value.trim();
+    if (a && v) {
+      setTimeout(() => {
+        if (currentStep === 3 && validateStep(3)) {
+          currentStep++;
+          showStep(currentStep);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 300);
+    }
+  }
+  document.getElementById('adresse').addEventListener('blur', checkStep3Auto);
+  document.getElementById('ville').addEventListener('blur', checkStep3Auto);
+
   // Téléphone : chiffres uniquement, 10 max
   document.getElementById('tel').addEventListener('input', function() {
     this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
   });
 
-  // Style radio options on click
+  // Style radio options on click + auto-advance on steps 1 & 2
   document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
       const name = radio.name;
@@ -712,6 +730,17 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       radio.closest('.option').classList.add('selected');
       hideError(currentStep);
+
+      // Auto-advance uniquement sur les étapes radio (1 et 2)
+      if (currentStep <= 2) {
+        setTimeout(() => {
+          if (validateStep(currentStep) && currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 300);
+      }
     });
   });
 
