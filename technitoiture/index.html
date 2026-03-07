@@ -502,8 +502,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('thank-you').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
-    if (WEBHOOK_URL) {
-      const payload = {
+    const payload = {
       firstName: answers.prenom,
       lastName: answers.nom,
       phone: answers.tel,
@@ -527,7 +526,6 @@ document.addEventListener("DOMContentLoaded", function() {
         body: JSON.stringify(payload)
       });
     } catch(e) { console.error('Webhook CAPI error:', e); }
-    }
   }
 });
 </script>
