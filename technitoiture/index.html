@@ -58,7 +58,6 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     line-height: 1.5;
   }
 
-  /* ── HEADER ── */
   header {
     display: flex;
     align-items: center;
@@ -68,368 +67,103 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     background: var(--white);
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
+  .logo { display: flex; align-items: center; gap: 12px; }
   .logo-icon { width: 60px; }
+  .logo-text { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.2; color: #111; }
+  .logo-text span { display: block; font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.15em; }
 
-  .logo-text {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    line-height: 1.2;
-    color: #111;
-  }
-
-  .logo-text span {
-    display: block;
-    font-size: 10px;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-  }
-
-  .google-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    text-align: center;
-  }
-
+  .google-badge { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
   .google-badge img { height: 28px; }
   .google-badge .stars { color: #fbbc04; font-size: 18px; letter-spacing: 2px; }
   .google-badge .score { font-size: 15px; font-weight: 700; color: #111; }
   .google-badge .reviews { font-size: 11px; color: #111; text-decoration: none; cursor: default; }
 
-  /* ── TRUST BAR ── */
-  .trust-bar {
-    background: var(--black);
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-    border-right: 1px solid #333;
-    flex: 1;
-    justify-content: center;
-  }
-
+  .trust-bar { background: var(--black); color: var(--white); display: flex; justify-content: center; align-items: center; gap: 0; padding: 0; overflow: hidden; }
+  .trust-item { display: flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 13px; font-weight: 600; color: #fff; border-right: 1px solid #333; flex: 1; justify-content: center; }
   .trust-item:last-child { border-right: none; }
   .trust-item .icon { font-size: 16px; }
 
-  /* ── HERO ── */
-  .hero {
-    text-align: center;
-    padding: 48px 20px 0;
-    background: #fff;
-  }
+  .hero { text-align: center; padding: 48px 20px 0; background: #fff; }
+  .hero h1 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; line-height: 1.25; max-width: 760px; margin: 0 auto 32px; color: #111; }
 
-  .hero h1 {
-    font-size: clamp(22px, 4vw, 36px);
-    font-weight: 800;
-    line-height: 1.25;
-    max-width: 760px;
-    margin: 0 auto 32px;
-    color: #111;
-  }
-
-  /* ── FORM CARD ── */
-  .form-wrap {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 16px 60px;
-    background: #fff;
-  }
-
-  .form-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    overflow: hidden;
-  }
-
+  .form-wrap { max-width: 520px; margin: 0 auto; padding: 0 16px 60px; background: #fff; }
+  .form-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
   .form-body { padding: 28px 28px 20px; }
 
-  /* Progress bar */
   .progress-bar { height: 4px; background: #e0e0e0; position: relative; }
   .progress-fill { height: 100%; background: var(--blue); transition: width 0.3s ease; }
 
-  /* Question */
-  .question-label {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--black);
-    line-height: 1.4;
-  }
+  .question-label { font-size: 15px; font-weight: 700; margin-bottom: 20px; color: var(--black); line-height: 1.4; }
 
-  /* Radio options */
   .options { display: flex; flex-direction: column; gap: 10px; }
-
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-    font-size: 14px;
-    user-select: none;
-    color: var(--text);
-    background: var(--white);
-  }
-
+  .option { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 6px; cursor: pointer; transition: border-color 0.15s, background 0.15s; font-size: 14px; user-select: none; color: var(--text); background: var(--white); }
   .option:hover { border-color: var(--blue); background: #f0f6ff; }
   .option.selected { border-color: var(--blue); background: #f0f6ff; }
+  .option input[type="radio"] { width: 18px; height: 18px; accent-color: var(--blue); flex-shrink: 0; cursor: pointer; }
 
-  .option input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--blue);
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-
-  /* Text inputs */
   .field-group { display: flex; flex-direction: column; gap: 14px; }
-
-  .field-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-    display: block;
-  }
-
+  .field-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; display: block; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"] {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-    color: var(--text);
-    background: var(--white);
-    transition: border-color 0.15s;
-    outline: none;
-  }
-
-  input[type="text"]:focus,
-  input[type="tel"]:focus { border-color: var(--blue); }
+  input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--text); background: var(--white); transition: border-color 0.15s; outline: none; }
+  input[type="text"]:focus, input[type="tel"]:focus { border-color: var(--blue); }
   input::placeholder { color: #aaa; }
 
-  /* Trust badges */
-  .trust-badges {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0 20px;
-  }
-
-  .badge-approved {
-    background: linear-gradient(135deg, #2c2c2c, #444);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    letter-spacing: 0.05em;
-  }
-
+  .trust-badges { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 20px 0 20px; }
+  .badge-approved { background: linear-gradient(135deg, #2c2c2c, #444); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 6px; letter-spacing: 0.05em; }
   .badge-approved .thumb { font-size: 16px; }
   .badge-shield { font-size: 22px; }
 
-  /* Nav buttons */
   .form-nav { display: flex; border-top: 1px solid var(--border); }
-
-  .btn-prev, .btn-next {
-    flex: 1;
-    padding: 16px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    transition: background 0.15s;
-  }
-
-  .btn-prev {
-    background: var(--blue);
-    color: #fff !important;
-    border-right: 1px solid rgba(255,255,255,0.2);
-  }
-
+  .btn-prev, .btn-next { flex: 1; padding: 16px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: background 0.15s; }
+  .btn-prev { background: var(--blue); color: #fff !important; border-right: 1px solid rgba(255,255,255,0.2); }
   .btn-prev:hover { background: var(--blue-dark); }
   .btn-next { background: var(--blue); color: #fff; }
   .btn-next:hover { background: var(--blue-dark); }
   .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  .btn-submit {
-    flex: 1;
-    padding: 16px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    background: var(--blue);
-    color: #fff !important;
-    transition: background 0.15s;
-    letter-spacing: 0.05em;
-  }
-
+  .btn-submit { flex: 1; padding: 16px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; border: none; background: var(--blue); color: #fff !important; transition: background 0.15s; letter-spacing: 0.05em; }
   .btn-submit:hover { background: var(--blue-dark); }
 
-  /* Step hidden/visible */
   .step { display: none; }
   .step.active { display: block; }
 
-  /* ── THANK YOU PAGE ── */
   #thank-you { display: none; }
 
-  .ty-hero {
-    background: #fff;
-    color: #111;
-    text-align: center;
-    padding: 60px 20px;
-  }
-
+  .ty-hero { background: #fff; color: #111; text-align: center; padding: 60px 20px; }
   .ty-hero img { width: 80px; margin-bottom: 24px; }
-
-  .ty-hero h2 {
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 800;
-    margin-bottom: 16px;
-    color: #111;
-  }
-
+  .ty-hero h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 16px; color: #111; }
   .ty-hero p { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #333; }
-
-  .ty-hero .desc {
-    font-size: 14px;
-    font-weight: 400;
-    max-width: 640px;
-    margin: 0 auto;
-    color: #555;
-    line-height: 1.6;
-  }
+  .ty-hero .desc { font-size: 14px; font-weight: 400; max-width: 640px; margin: 0 auto; color: #555; line-height: 1.6; }
 
   .ty-trust { text-align: center; padding: 48px 20px; background: #fff; }
-
   .ty-trust h3 { font-size: 20px; font-weight: 800; margin-bottom: 32px; color: #111; }
-
   .ty-badges { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
   .ty-badge img { height: 90px; }
 
-  /* ── REVIEWS ── */
   .reviews-section { background: var(--gray); padding: 60px 20px; text-align: center; }
-
   .reviews-section h3 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #111; }
   .reviews-section .sub { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
-
   .stars-row { color: #fbbc04; font-size: 16px; }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: left;
-  }
-
-  .review-card {
-    background: var(--white);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-
+  .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto; text-align: left; }
+  .review-card { background: var(--white); border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
   .reviewer { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-
-  .reviewer-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--white);
-    flex-shrink: 0;
-  }
-
+  .reviewer-avatar { width: 36px; height: 36px; border-radius: 50%; background: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--white); flex-shrink: 0; }
   .reviewer-name { font-size: 14px; font-weight: 700; color: var(--black); }
   .reviewer-meta { font-size: 12px; color: var(--muted); }
   .review-stars { color: #fbbc04; font-size: 13px; margin-bottom: 8px; }
   .review-text { font-size: 13px; color: #444; line-height: 1.6; }
 
-  /* ── GALLERY ── */
   .gallery-section { padding: 60px 20px; text-align: center; background: #fff; }
   .gallery-section h3 { font-size: 24px; font-weight: 800; margin-bottom: 32px; color: #111; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
+  .gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 6px; border: 2px solid var(--border); }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .gallery-grid img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 2px solid var(--border);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    color: #888;
-    text-align: center;
-    padding: 28px 20px;
-    font-size: 13px;
-  }
-
+  footer { background: var(--black); color: #888; text-align: center; padding: 28px 20px; font-size: 13px; }
   footer img { height: 40px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto; }
 
-  /* ── ERROR ── */
   .error-msg { color: #d32f2f; font-size: 12px; margin-top: 8px; display: none; }
   .error-msg.show { display: block; }
 
-  /* ── MOBILE ── */
   @media (max-width: 600px) {
     header { padding: 12px 16px; }
     .trust-item { padding: 10px 8px; font-size: 11px; gap: 4px; }
@@ -441,25 +175,17 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     .ty-badges { gap: 24px; }
   }
 
-  /* Fade-in animation */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .step.active { animation: fadeUp 0.25s ease; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     LANDING PAGE
-══════════════════════════════════════ -->
 <div id="landing">
 
-  <!-- Header -->
   <header>
     <div class="logo">
-      <img src="https://matoiture.co/MA%20TOITURE%20(3)%20(1).webp" alt="Techni Toiture" style="width:110px;height:110px;object-fit:contain;">
+      <img src="https://matoiture.co/MA%20TOITURE%20(3)%20(1).webp" alt="Techni Toiture Carcassonne" style="width:110px;height:110px;object-fit:contain;">
     </div>
     <div class="google-badge">
       <svg width="72" height="24" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
@@ -476,7 +202,6 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     </div>
   </header>
 
-  <!-- Trust bar -->
   <div class="trust-bar">
     <div class="trust-item"><span class="icon">★</span> Qualité Garantie</div>
     <div class="trust-item"><span class="icon">👍</span> Sans Frais Cachés</div>
@@ -484,12 +209,10 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     <div class="trust-item"><span class="icon">✅</span> Certifié et Assuré</div>
   </div>
 
-  <!-- Hero -->
   <div class="hero">
     <h1>Votre toiture a besoin d'attention&nbsp;? Obtenez un devis gratuit rapidement</h1>
   </div>
 
-  <!-- Form -->
   <div class="form-wrap">
     <div class="form-card">
       <div class="progress-bar">
@@ -499,51 +222,27 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
       <form id="quiz-form" novalidate>
         <div class="form-body">
 
-          <!-- Step 1 : Type de travaux -->
           <div class="step active" data-step="1">
             <div class="question-label">Question 1 sur 4 : Quel type de travaux souhaitez-vous réaliser&nbsp;?</div>
             <div class="options">
-              <label class="option">
-                <input type="radio" name="q1" value="Réparation / Fuite">
-                Réparation / Fuite
-              </label>
-              <label class="option">
-                <input type="radio" name="q1" value="Réfection complète">
-                Réfection complète
-              </label>
-              <label class="option">
-                <input type="radio" name="q1" value="Remplacement toiture">
-                Remplacement toiture
-              </label>
-              <label class="option">
-                <input type="radio" name="q1" value="Nettoyage">
-                Nettoyage
-              </label>
+              <label class="option"><input type="radio" name="q1" value="Réparation / Fuite"> Réparation / Fuite</label>
+              <label class="option"><input type="radio" name="q1" value="Réfection complète"> Réfection complète</label>
+              <label class="option"><input type="radio" name="q1" value="Remplacement toiture"> Remplacement toiture</label>
+              <label class="option"><input type="radio" name="q1" value="Nettoyage"> Nettoyage</label>
             </div>
             <div class="error-msg" id="err1">Veuillez sélectionner une réponse.</div>
           </div>
 
-          <!-- Step 2 : Délai -->
           <div class="step" data-step="2">
             <div class="question-label">Question 2 sur 4 : Dans quel délai souhaitez-vous réaliser ce projet&nbsp;?</div>
             <div class="options">
-              <label class="option">
-                <input type="radio" name="q2" value="Le plus rapidement possible">
-                Le plus rapidement possible
-              </label>
-              <label class="option">
-                <input type="radio" name="q2" value="Les prochaines semaines">
-                Les prochaines semaines
-              </label>
-              <label class="option">
-                <input type="radio" name="q2" value="Dans 1 mois">
-                Dans 1 mois
-              </label>
+              <label class="option"><input type="radio" name="q2" value="Le plus rapidement possible"> Le plus rapidement possible</label>
+              <label class="option"><input type="radio" name="q2" value="Les prochaines semaines"> Les prochaines semaines</label>
+              <label class="option"><input type="radio" name="q2" value="Dans 1 mois"> Dans 1 mois</label>
             </div>
             <div class="error-msg" id="err2">Veuillez sélectionner une réponse.</div>
           </div>
 
-          <!-- Step 3 : Adresse -->
           <div class="step" data-step="3">
             <div class="question-label">Question 3 sur 4 : Quelle est l'adresse de votre projet&nbsp;?</div>
             <div class="field-group">
@@ -559,7 +258,6 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
             <div class="error-msg" id="err3">Veuillez remplir tous les champs.</div>
           </div>
 
-          <!-- Step 4 : Coordonnées -->
           <div class="step" data-step="4">
             <div class="question-label">Question 4 sur 4 : Vos coordonnées&nbsp;?</div>
             <div class="field-group">
@@ -579,18 +277,13 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
             <div class="error-msg" id="err4">Veuillez remplir tous les champs.</div>
           </div>
 
-        </div><!-- /form-body -->
+        </div>
 
-        <!-- Trust badges -->
         <div class="trust-badges">
-          <div class="badge-approved">
-            <span class="thumb">👍</span>
-            <span>★★★★★ APPROUVÉ</span>
-          </div>
+          <div class="badge-approved"><span class="thumb">👍</span><span>★★★★★ APPROUVÉ</span></div>
           <span class="badge-shield">🛡️</span>
         </div>
 
-        <!-- Navigation -->
         <div class="form-nav" id="form-nav">
           <button type="button" class="btn-prev" id="btn-prev" style="display:none">← Précédent</button>
           <button type="button" class="btn-next" id="btn-next" style="color:#fff">Suivant →</button>
@@ -600,15 +293,12 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     </div>
   </div>
 
-</div><!-- /landing -->
+</div>
 
-<!-- ══════════════════════════════════════
-     THANK YOU PAGE
-══════════════════════════════════════ -->
 <div id="thank-you">
 
   <div class="ty-hero">
-    <img src="https://matoiture.co/MA%20TOITURE%20(3)%20(1).webp" alt="Techni Toiture" style="width:200px;height:200px;object-fit:contain;margin-bottom:16px;">
+    <img src="https://matoiture.co/MA%20TOITURE%20(3)%20(1).webp" alt="Techni Toiture Carcassonne" style="width:200px;height:200px;object-fit:contain;margin-bottom:16px;">
     <h2>Merci d'avoir choisi Techni Toiture Carcassonne&nbsp;!</h2>
     <p>Attendez-vous à recevoir un appel de notre part prochainement&nbsp;!</p>
     <p class="desc">Nos <strong>prochaines étapes</strong> incluent une visite approfondie par notre expert, une consultation personnalisée axée sur vos besoins, et des explications détaillées sur vos options.</p>
@@ -677,16 +367,16 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
     </div>
   </div>
 
-</div><!-- /thank-you -->
+</div>
 
-<!-- Copyright footer -->
 <div style="background:#111;color:#fff;text-align:center;padding:16px;font-size:12px;font-family:'Outfit',sans-serif;">
-  Copyright &copy; 2026 Techni Toiture. Tous droits réservés.
+  Copyright &copy; 2026 Techni Toiture Carcassonne. Tous droits réservés.
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/FM0KWBA82pHThzHLGx3p/webhook-trigger/hXyY0InnkikoGIxSYkhT';
+  const WEBHOOK_LEAD = 'https://services.leadconnectorhq.com/hooks/FM0KWBA82pHThzHLGx3p/webhook-trigger/hXyY0InnkikoGIxSYkhT';
+  const WEBHOOK_CAPI = 'https://services.leadconnectorhq.com/hooks/FM0KWBA82pHThzHLGx3p/webhook-trigger/54601189-de9a-449e-aa00-ed84969261f0';
 
   let currentStep = 1;
   const totalSteps = 4;
@@ -698,7 +388,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnNext  = document.getElementById('btn-next');
   const formNav  = document.getElementById('form-nav');
 
-  // Auto-advance step 3 quand adresse + ville remplis au blur
   function checkStep3Auto() {
     if (currentStep !== 3) return;
     const a = document.getElementById('adresse').value.trim();
@@ -716,12 +405,10 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('adresse').addEventListener('blur', checkStep3Auto);
   document.getElementById('ville').addEventListener('blur', checkStep3Auto);
 
-  // Téléphone : chiffres uniquement, 10 max
   document.getElementById('tel').addEventListener('input', function() {
     this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
   });
 
-  // Style radio options on click + auto-advance on steps 1 & 2
   document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
       const name = radio.name;
@@ -730,8 +417,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       radio.closest('.option').classList.add('selected');
       hideError(currentStep);
-
-      // Auto-advance uniquement sur les étapes radio (1 et 2)
       if (currentStep <= 2) {
         setTimeout(() => {
           if (validateStep(currentStep) && currentStep < totalSteps) {
@@ -777,10 +462,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function validateStep(n) {
     if (n <= 2) {
       const checked = document.querySelector(`input[name="q${n}"]:checked`);
-      if (!checked) {
-        document.getElementById(`err${n}`).classList.add('show');
-        return false;
-      }
+      if (!checked) { document.getElementById(`err${n}`).classList.add('show'); return false; }
       answers[`q${n}`] = checked.value;
       return true;
     }
@@ -788,13 +470,8 @@ document.addEventListener("DOMContentLoaded", function() {
       const a = document.getElementById('adresse').value.trim();
       const v = document.getElementById('ville').value.trim();
       const err3 = document.getElementById('err3');
-      if (!a || !v) {
-        err3.textContent = 'Veuillez remplir tous les champs.';
-        err3.classList.add('show');
-        return false;
-      }
-      answers.adresse = a;
-      answers.ville = v;
+      if (!a || !v) { err3.textContent = 'Veuillez remplir tous les champs.'; err3.classList.add('show'); return false; }
+      answers.adresse = a; answers.ville = v;
       return true;
     }
     if (n === 4) {
@@ -802,19 +479,9 @@ document.addEventListener("DOMContentLoaded", function() {
       const no = document.getElementById('nom').value.trim();
       const t = document.getElementById('tel').value.trim();
       const err4 = document.getElementById('err4');
-      if (!p || !no || !t) {
-        err4.textContent = 'Veuillez remplir tous les champs.';
-        err4.classList.add('show');
-        return false;
-      }
-      if (t.length !== 10) {
-        err4.textContent = 'Le numéro de téléphone doit contenir exactement 10 chiffres.';
-        err4.classList.add('show');
-        return false;
-      }
-      answers.prenom = p;
-      answers.nom = no;
-      answers.tel = t;
+      if (!p || !no || !t) { err4.textContent = 'Veuillez remplir tous les champs.'; err4.classList.add('show'); return false; }
+      if (t.length !== 10) { err4.textContent = 'Le numéro de téléphone doit contenir exactement 10 chiffres.'; err4.classList.add('show'); return false; }
+      answers.prenom = p; answers.nom = no; answers.tel = t;
       return true;
     }
     return true;
@@ -822,55 +489,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
   btnNext.addEventListener('click', () => {
     if (!validateStep(currentStep)) return;
-    if (currentStep < totalSteps) {
-      currentStep++;
-      showStep(currentStep);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    if (currentStep < totalSteps) { currentStep++; showStep(currentStep); window.scrollTo({ top: 0, behavior: 'smooth' }); }
   });
 
   btnPrev.addEventListener('click', () => {
-    if (currentStep > 1) {
-      currentStep--;
-      showStep(currentStep);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    if (currentStep > 1) { currentStep--; showStep(currentStep); window.scrollTo({ top: 0, behavior: 'smooth' }); }
   });
 
   async function handleSubmit() {
     if (!validateStep(4)) return;
-
     document.getElementById('landing').style.display = 'none';
     document.getElementById('thank-you').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Fire Meta Lead event
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'Lead');
-    }
-
+    if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
     if (WEBHOOK_URL) {
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            firstName: answers.prenom,
-            lastName: answers.nom,
-            phone: answers.tel,
-            address1: answers.adresse,
-            city: answers.ville,
-            typeTravaux: answers.q1,
-            delai: answers.q2,
-            source: 'matoiture.co/technitoiture'
-          })
-        });
-      } catch(e) {
-        console.error('Webhook error:', e);
-      }
+      const payload = {
+      firstName: answers.prenom,
+      lastName: answers.nom,
+      phone: answers.tel,
+      address1: answers.adresse,
+      city: answers.ville,
+      typeTravaux: answers.q1,
+      delai: answers.q2,
+      source: 'matoiture.co/technitoiture'
+    };
+    try {
+      await fetch(WEBHOOK_LEAD, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(e) { console.error('Webhook LEAD error:', e); }
+    try {
+      await fetch(WEBHOOK_CAPI, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(e) { console.error('Webhook CAPI error:', e); }
     }
   }
-}); // DOMContentLoaded
+});
 </script>
 
 </body>
