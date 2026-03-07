@@ -775,7 +775,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('landing').style.display = 'none';
     document.getElementById('thank-you').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+    const eventId = Date.now().toString();
+    if (typeof fbq !== 'undefined') { fbq('track', 'Lead', {}, { eventID: eventId }); }
     const payload = {
       firstName: answers.prenom,
       lastName: answers.nom,
@@ -784,7 +785,8 @@ document.addEventListener("DOMContentLoaded", function() {
       city: answers.ville,
       typeTravaux: answers.q1,
       delai: answers.q2,
-      source: 'matoiture.co/alturatoiture'
+      source: 'matoiture.co/alturatoiture',
+      event_id: eventId
     };
     try {
       await fetch(WEBHOOK_LEAD, {
