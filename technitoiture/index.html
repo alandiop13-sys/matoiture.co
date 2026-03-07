@@ -506,7 +506,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   function buildFbc(fbclid) {
     if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
-    return getCookie('_fbc') || '';
+    const stored = getCookie('_fbc');
+    // Vérifier que le cookie stocké est valide (pas le mot 'fbclid' littéral)
+    if (stored && !stored.endsWith('.fbclid')) return stored;
+    return '';
   }
   (function storeFbclid() {
     const fbclid = getUrlParam('fbclid');
