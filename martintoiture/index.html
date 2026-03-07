@@ -501,31 +501,33 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('landing').style.display = 'none';
     document.getElementById('thank-you').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+    const eventId = Date.now().toString();
+    if (typeof fbq !== 'undefined') { fbq('track', 'Lead', {}, { eventID: eventId }); }
     const payload = {
-        firstName: answers.prenom,
-        lastName: answers.nom,
-        phone: answers.tel,
-        address1: answers.adresse,
-        city: answers.ville,
-        typeTravaux: answers.q1,
-        delai: answers.q2,
-        source: 'matoiture.co/martintoiture'
-      };
-      try {
-        await fetch(WEBHOOK_LEAD, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      } catch(e) { console.error('Webhook LEAD error:', e); }
-      try {
-        await fetch(WEBHOOK_CAPI, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      } catch(e) { console.error('Webhook CAPI error:', e); }
+      firstName: answers.prenom,
+      lastName: answers.nom,
+      phone: answers.tel,
+      address1: answers.adresse,
+      city: answers.ville,
+      typeTravaux: answers.q1,
+      delai: answers.q2,
+      source: 'matoiture.co/martintoiture',
+      event_id: eventId
+    };
+    try {
+      await fetch(WEBHOOK_LEAD, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(e) { console.error('Webhook LEAD error:', e); }
+    try {
+      await fetch(WEBHOOK_CAPI, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(e) { console.error('Webhook CAPI error:', e); }
   }
 });
 </script>
