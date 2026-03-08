@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic Toiture — Technitoiture</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0f0f0e; --surface: #1a1917; --border: #2e2c28;
+  --accent: #e8a84c; --accent-dim: rgba(232,168,76,0.12);
+  --text: #f0ece4; --muted: #7a7568; --error: #e05c5c;
+}
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 48px 16px 80px; }
+.header { text-align: center; margin-bottom: 52px; }
+.brand { font-family: 'DM Serif Display', serif; font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: block; }
+h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.15; color: var(--text); margin-bottom: 10px; }
+.subtitle { color: var(--muted); font-size: 0.9rem; letter-spacing: 0.04em; }
+.form-wrap { width: 100%; max-width: 580px; }
+
+[data-step] { display: block; }
+[data-step][hidden] { display: none; }
+
+.progress { display: flex; gap: 6px; margin-bottom: 36px; }
+.progress-dot { height: 3px; flex: 1; background: var(--border); border-radius: 2px; transition: background 0.3s ease; }
+.progress-dot.done { background: var(--accent); }
+.section-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.step-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 28px; line-height: 1.2; }
+.field { margin-bottom: 20px; }
+label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.03em; }
+label span.req { color: var(--accent); margin-left: 2px; }
+input[type="text"], input[type="tel"], textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 300; padding: 14px 16px; outline: none; transition: border-color 0.2s ease; -webkit-appearance: none; }
+input:focus, textarea:focus { border-color: var(--accent); }
+textarea { resize: vertical; min-height: 90px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.options-grid.col1 { grid-template-columns: 1fr; }
+.option-card { position: relative; }
+.option-card input { position: absolute; opacity: 0; width: 0; height: 0; }
+.option-card label { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; cursor: pointer; font-size: 0.88rem; color: var(--text); letter-spacing: 0; margin: 0; transition: border-color 0.2s, background 0.2s; user-select: none; }
+.option-card label::before { content: ''; width: 16px; height: 16px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; transition: all 0.2s; }
+.option-card input[type="radio"] + label::before { border-radius: 50%; }
+.option-card input:checked + label { border-color: var(--accent); background: var(--accent-dim); }
+.option-card input:checked + label::before { background: var(--accent); border-color: var(--accent); }
+.upload-zone { border: 1.5px dashed var(--border); border-radius: 8px; padding: 28px 20px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.upload-zone:hover { border-color: var(--accent); background: var(--accent-dim); }
+.upload-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+.upload-text { font-size: 0.85rem; color: var(--muted); }
+.upload-text strong { color: var(--accent); font-weight: 500; }
+.file-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+.file-tag { background: var(--accent-dim); border: 1px solid var(--accent); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; color: var(--accent); display: flex; align-items: center; gap: 6px; }
+.file-tag button { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 0.9rem; line-height: 1; padding: 0; }
+.btn-row { display: flex; gap: 12px; margin-top: 32px; }
+.btn { flex: 1; padding: 15px 20px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; letter-spacing: 0.04em; }
+.btn-primary { background: var(--accent); color: #0f0f0e; }
+.btn-primary:hover { background: #f0b85a; }
+.btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+.btn-secondary:hover { border-color: var(--muted); color: var(--text); }
+.err { font-size: 0.78rem; color: var(--error); margin-top: 5px; display: none; }
+.err.show { display: block; }
+.divider { height: 1px; background: var(--border); margin: 20px 0; }
+.hint-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+.hint-title { color: var(--accent); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.success { display: none; text-align: center; padding: 40px 0; }
+.success.show { display: block; }
+.success-icon { width: 64px; height: 64px; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 1.6rem; }
+.success h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 10px; }
+.success p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Diagnostic Toiture</h1>
+  <p class="subtitle">Rapport personnalisé après inspection</p>
+</div>
+
+<div class="form-wrap">
+  <div class="progress" id="progress">
+    <div class="progress-dot done" id="dot0"></div>
+    <div class="progress-dot" id="dot1"></div>
+    <div class="progress-dot" id="dot2"></div>
+    <div class="progress-dot" id="dot3"></div>
+  </div>
+
+  <!-- ÉTAPE 1 — Prospect -->
+  <div data-step="0">
+    <div class="section-label">Étape 1 / 4</div>
+    <div class="step-title">Informations prospect</div>
+    <div class="field-row">
+      <div class="field">
+        <label>Prénom <span class="req">*</span></label>
+        <input type="text" id="prenom" placeholder="Jean">
+        <div class="err" id="e-prenom">Requis</div>
+      </div>
+      <div class="field">
+        <label>Nom <span class="req">*</span></label>
+        <input type="text" id="nom" placeholder="Dupont">
+        <div class="err" id="e-nom">Requis</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Téléphone <span class="req">*</span></label>
+      <input type="tel" id="tel" placeholder="06 12 34 56 78">
+      <div class="err" id="e-tel">Numéro invalide</div>
+    </div>
+    <div class="field">
+      <label>Adresse <span class="req">*</span></label>
+      <input type="text" id="adresse" placeholder="12 rue des Tilleuls">
+      <div class="err" id="e-adresse">Requis</div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Ville <span class="req">*</span></label>
+        <input type="text" id="ville" placeholder="Lyon">
+        <div class="err" id="e-ville">Requis</div>
+      </div>
+      <div class="field">
+        <label>Code postal <span class="req">*</span></label>
+        <input type="text" id="cp" placeholder="69000">
+        <div class="err" id="e-cp">Requis</div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="goTo1()">Continuer →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 2 — Type de travaux -->
+  <div data-step="1" hidden>
+    <div class="section-label">Étape 2 / 4</div>
+    <div class="step-title">Type de travaux</div>
+    <div class="field">
+      <div class="options-grid">
+        <div class="option-card"><input type="radio" name="type" id="t1" value="renovation"><label for="t1">🏠 Rénovation complète</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t2" value="reparation"><label for="t2">🔧 Réparation ponctuelle</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t3" value="demoussage"><label for="t3">🌿 Démoussage / hydrofuge</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t4" value="zinguerie"><label for="t4">💧 Zinguerie</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t5" value="charpente"><label for="t5">🏗️ Charpente</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t6" value="velux"><label for="t6">🪟 Velux / fenêtre de toit</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t7" value="isolation"><label for="t7">🧱 Isolation toiture</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t8" value="terrasse"><label for="t8">🏚️ Toiture terrasse</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t9" value="zinc"><label for="t9">🔩 Zinc / bac acier</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t10" value="solaire"><label for="t10">☀️ Panneaux solaires</label></div>
+        <div class="option-card"><input type="radio" name="type" id="t11" value="lucarne"><label for="t11">🚪 Lucarne</label></div>
+      </div>
+      <div class="err" id="e-type">Sélectionnez un type</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="show(0)">← Retour</button>
+      <button class="btn btn-primary" onclick="goTo2()">Continuer →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 3 — Détails (commun) -->
+  <div data-step="2" hidden>
+    <div class="section-label">Étape 3 / 4</div>
+    <div class="step-title">Détails du chantier</div>
+    <div id="details-content"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="show(1)">← Retour</button>
+      <button class="btn btn-primary" onclick="goTo3()">Continuer →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 4 — Photos & devis -->
+  <div data-step="3" hidden>
+    <div class="section-label">Étape 4 / 4</div>
+    <div class="step-title">Photos & devis</div>
+
+    <div class="field">
+      <label>📷 Photos du toit <span class="req">*</span></label>
+      <div class="upload-zone" onclick="document.getElementById('f-toit').click()">
+        <input type="file" id="f-toit" accept="image/*" multiple style="display:none" onchange="addFiles('toit',this.files)">
+        <span class="upload-icon">🏠</span>
+        <div class="upload-text"><strong>Appuyer pour ajouter</strong><br>Vue générale + zones abîmées</div>
+      </div>
+      <div class="file-list" id="fl-toit"></div>
+      <div class="err" id="e-toit">Au moins une photo requise</div>
+    </div>
+
+    <div class="field">
+      <label>📋 Photo du devis <span class="req">*</span></label>
+      <div class="upload-zone" onclick="document.getElementById('f-devis').click()">
+        <input type="file" id="f-devis" accept="image/*" style="display:none" onchange="addFiles('devis',this.files)">
+        <span class="upload-icon">📄</span>
+        <div class="upload-text"><strong>Photographier le devis</strong><br>Page tarifée lisible</div>
+      </div>
+      <div class="file-list" id="fl-devis"></div>
+      <div class="err" id="e-devis">Photo du devis requise</div>
+    </div>
+
+    <div class="field">
+      <label>💬 Commentaire <span class="req">*</span></label>
+      <div class="hint-box">
+        <div class="hint-title">Exemple</div>
+        <div id="hint" style="color:var(--muted);font-style:italic;font-size:0.82rem;line-height:1.6;"></div>
+      </div>
+      <textarea id="comment" placeholder="État général, problèmes vus, urgence, demandes client..."></textarea>
+      <div class="err" id="e-comment">Requis</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="show(2)">← Retour</button>
+      <button class="btn btn-primary" onclick="submit()">Envoyer ✓</button>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success" id="success">
+    <div class="success-icon">✓</div>
+    <h2>Envoyé ✓</h2>
+    <p>Le rapport sera généré sous peu<br>et vous sera envoyé sur <strong style="color:var(--accent)">WhatsApp</strong>.</p>
+  </div>
+</div>
+
+<script>
+var files = { toit: [], devis: [] };
+var selectedType = null;
+
+var hints = {
+  renovation: "Toiture tuiles ~30 ans, nombreuses fissures en rive droite, faîtage décollé sur 4m. Humidité au plafond chambre principale. Client souhaite réfection totale avant hiver. Accès facile.",
+  reparation: "3 tuiles manquantes côté nord suite tempête. Légère infiltration grenier après pluie. Reste du toit en bon état. Intervention rapide souhaitée.",
+  demoussage: "Mousse dense versant nord, partielle versant sud. Pas d'infiltration mais risque court terme. Souhaite traitement hydrofuge après nettoyage. Maison plain-pied.",
+  zinguerie: "Solins cheminée décollés, joints oxydés. Gouttières zinc percées sur 3m façade principale. Toiture elle-même en bon état.",
+  charpente: "Pourrissement sur 3 chevrons côté nord. Légère attaque vrillettes. Plancher grenier légèrement fléchi. Traitement + remplacement partiel nécessaire.",
+  velux: "2 velux ~20 ans. Infiltration autour cadre velux ouest à chaque forte pluie. Joint décollé, solin abîmé. Client souhaite remplacement complet.",
+  isolation: "Combles perdus non isolés, maison années 70. Factures chauffage très élevées. Surface ~90m². Trappe d'accès présente.",
+  terrasse: "Toiture terrasse 55m², membrane bitume 15 ans. Deux zones cloquage + infiltration bureau. Client souhaite refonte complète EPDM.",
+  zinc: "Extension bac acier nervuré 80m². Vis oxydées, rouille sur 2 panneaux. Pas d'infiltration mais état préoccupant.",
+  solaire: "Toit tuiles bon état, orienté plein sud, pente 35°. Client veut 12 panneaux surimposition. Charpente solide vérifiée.",
+  lucarne: "Lucarne capucine côté sud, étanchéité défaillante autour cadre bois. Infiltration mur intérieur. Bois partiellement pourri."
+};
+
+var detailsHTML = {
+  renovation: `
+    <div class="field"><label>Matériau actuel <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d1" value="Tuiles terre cuite"><label>Tuiles terre cuite</label></div><div class="option-card"><input type="radio" name="d1" value="Ardoise"><label>Ardoise</label></div><div class="option-card"><input type="radio" name="d1" value="Zinc"><label>Zinc</label></div><div class="option-card"><input type="radio" name="d1" value="Bac acier"><label>Bac acier</label></div><div class="option-card"><input type="radio" name="d1" value="Autre"><label>Autre</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Matériau souhaité <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Tuiles terre cuite"><label>Tuiles terre cuite</label></div><div class="option-card"><input type="radio" name="d2" value="Ardoise naturelle"><label>Ardoise naturelle</label></div><div class="option-card"><input type="radio" name="d2" value="Zinc"><label>Zinc</label></div><div class="option-card"><input type="radio" name="d2" value="Identique"><label>Identique à l'actuel</label></div><div class="option-card"><input type="radio" name="d2" value="Pas de préférence"><label>Pas de préférence</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>État charpente <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d3" value="Bon état"><label>Bon état</label></div><div class="option-card"><input type="radio" name="d3" value="Quelques éléments abîmés"><label>Quelques éléments abîmés</label></div><div class="option-card"><input type="radio" name="d3" value="Partiellement à remplacer"><label>Partiellement à remplacer</label></div><div class="option-card"><input type="radio" name="d3" value="Entièrement à remplacer"><label>Entièrement à remplacer</label></div></div>
+    <div class="err" id="e-d3">Requis</div></div>
+    <div class="field"><label>Âge du toit <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d4" value="<10 ans"><label>&lt; 10 ans</label></div><div class="option-card"><input type="radio" name="d4" value="10-20 ans"><label>10–20 ans</label></div><div class="option-card"><input type="radio" name="d4" value="20-30 ans"><label>20–30 ans</label></div><div class="option-card"><input type="radio" name="d4" value=">30 ans"><label>&gt; 30 ans</label></div><div class="option-card"><input type="radio" name="d4" value="Client ne sait pas"><label>Client ne sait pas</label></div></div>
+    <div class="err" id="e-d4">Requis</div></div>
+    <div class="field"><label>Surface m² <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 145"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  reparation: `
+    <div class="field"><label>Type de toiture <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d1" value="Tuiles terre cuite"><label>Tuiles terre cuite</label></div><div class="option-card"><input type="radio" name="d1" value="Ardoise"><label>Ardoise</label></div><div class="option-card"><input type="radio" name="d1" value="Zinc"><label>Zinc</label></div><div class="option-card"><input type="radio" name="d1" value="Bac acier"><label>Bac acier</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Cause <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Tempête"><label>Tempête / vent</label></div><div class="option-card"><input type="radio" name="d2" value="Vétusté"><label>Vétusté</label></div><div class="option-card"><input type="radio" name="d2" value="Choc"><label>Choc / accident</label></div><div class="option-card"><input type="radio" name="d2" value="Indéterminée"><label>Non déterminée</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Urgence <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d3" value="Urgent — infiltration active"><label>🔴 Urgent — infiltration active</label></div><div class="option-card"><input type="radio" name="d3" value="Moyen terme"><label>🟡 Moyen terme</label></div><div class="option-card"><input type="radio" name="d3" value="Préventif"><label>🟢 Préventif</label></div></div>
+    <div class="err" id="e-d3">Requis</div></div>
+    <div class="field"><label>Nb éléments concernés <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 5 tuiles, 3m de faîtage"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  demoussage: `
+    <div class="field"><label>Type de toiture <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d1" value="Tuiles terre cuite"><label>Tuiles terre cuite</label></div><div class="option-card"><input type="radio" name="d1" value="Ardoise"><label>Ardoise</label></div><div class="option-card"><input type="radio" name="d1" value="Zinc"><label>Zinc</label></div><div class="option-card"><input type="radio" name="d1" value="Bac acier"><label>Bac acier</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Niveau de végétation <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d2" value="Léger"><label>Léger — quelques zones</label></div><div class="option-card"><input type="radio" name="d2" value="Modéré"><label>Modéré — surface partielle</label></div><div class="option-card"><input type="radio" name="d2" value="Dense"><label>Dense — toiture très envahie</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Dernière intervention <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d3" value="Jamais"><label>Jamais</label></div><div class="option-card"><input type="radio" name="d3" value="<5 ans"><label>&lt; 5 ans</label></div><div class="option-card"><input type="radio" name="d3" value=">5 ans"><label>&gt; 5 ans</label></div><div class="option-card"><input type="radio" name="d3" value="Ne sait pas"><label>Client ne sait pas</label></div></div>
+    <div class="err" id="e-d3">Requis</div></div>
+    <div class="field"><label>Surface m² <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 120"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  zinguerie: `
+    <div class="field"><label>Matériau actuel <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d1" value="Zinc"><label>Zinc</label></div><div class="option-card"><input type="radio" name="d1" value="Aluminium"><label>Aluminium</label></div><div class="option-card"><input type="radio" name="d1" value="PVC"><label>PVC</label></div><div class="option-card"><input type="radio" name="d1" value="Cuivre"><label>Cuivre</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Matériau souhaité <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Zinc"><label>Zinc</label></div><div class="option-card"><input type="radio" name="d2" value="Aluminium"><label>Aluminium</label></div><div class="option-card"><input type="radio" name="d2" value="PVC"><label>PVC</label></div><div class="option-card"><input type="radio" name="d2" value="Identique"><label>Identique</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Cheminée <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d3" value="Oui — solin à reprendre"><label>Oui — solin à reprendre</label></div><div class="option-card"><input type="radio" name="d3" value="Oui — bon état"><label>Oui — bon état</label></div><div class="option-card"><input type="radio" name="d3" value="Non"><label>Non</label></div></div>
+    <div class="err" id="e-d3">Requis</div></div>
+    <div class="field"><label>Linéaire (mètres) <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 24m de gouttières"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  charpente: `
+    <div class="field"><label>Type d'intervention <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d1" value="Remplacement partiel"><label>Remplacement partiel</label></div><div class="option-card"><input type="radio" name="d1" value="Remplacement complet"><label>Remplacement complet</label></div><div class="option-card"><input type="radio" name="d1" value="Renforcement"><label>Renforcement / consolidation</label></div><div class="option-card"><input type="radio" name="d1" value="Traitement insecticide"><label>Traitement insecticide / fongicide</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Type de charpente <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Traditionnelle"><label>Traditionnelle</label></div><div class="option-card"><input type="radio" name="d2" value="Fermettes"><label>Fermettes</label></div><div class="option-card"><input type="radio" name="d2" value="Métallique"><label>Métallique</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>`,
+
+  velux: `
+    <div class="field"><label>Type d'intervention <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d1" value="Pose neuve"><label>Pose neuve</label></div><div class="option-card"><input type="radio" name="d1" value="Remplacement"><label>Remplacement existant</label></div><div class="option-card"><input type="radio" name="d1" value="Réparation étanchéité"><label>Réparation / étanchéité</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Nombre de fenêtres <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 2"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  isolation: `
+    <div class="field"><label>Type d'isolation <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d1" value="Sarking"><label>Sarking — isolation par l'extérieur</label></div><div class="option-card"><input type="radio" name="d1" value="Combles perdus"><label>Combles perdus — soufflage</label></div><div class="option-card"><input type="radio" name="d1" value="Rampants"><label>Combles aménageables — rampants</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Isolation existante <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d2" value="Aucune"><label>Aucune</label></div><div class="option-card"><input type="radio" name="d2" value="Insuffisante / dégradée"><label>Insuffisante / dégradée</label></div><div class="option-card"><input type="radio" name="d2" value="Première isolation"><label>Première isolation de la maison</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Surface m² <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 90"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  terrasse: `
+    <div class="field"><label>Type d'intervention <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d1" value="Partielle"><label>Reprise partielle</label></div><div class="option-card"><input type="radio" name="d1" value="Complète"><label>Refonte complète</label></div><div class="option-card"><input type="radio" name="d1" value="Création neuve"><label>Création neuve</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Revêtement actuel <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Bitume"><label>Bitume / membrane</label></div><div class="option-card"><input type="radio" name="d2" value="Résine"><label>Résine liquide</label></div><div class="option-card"><input type="radio" name="d2" value="EPDM"><label>EPDM</label></div><div class="option-card"><input type="radio" name="d2" value="Gravillons"><label>Gravillons</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Surface m² <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 60"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  zinc: `
+    <div class="field"><label>Matériau <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d1" value="Zinc joint debout"><label>Zinc joint debout</label></div><div class="option-card"><input type="radio" name="d1" value="Bac acier nervuré"><label>Bac acier nervuré</label></div><div class="option-card"><input type="radio" name="d1" value="Bac acier isolé"><label>Bac acier isolé</label></div><div class="option-card"><input type="radio" name="d1" value="Aluminium"><label>Aluminium</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Type d'intervention <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Pose neuve"><label>Pose neuve</label></div><div class="option-card"><input type="radio" name="d2" value="Remplacement complet"><label>Remplacement complet</label></div><div class="option-card"><input type="radio" name="d2" value="Réparation"><label>Réparation partielle</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Surface m² <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 200"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  solaire: `
+    <div class="field"><label>Type de pose <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d1" value="Intégration tuiles solaires"><label>Intégration en toiture (tuiles solaires)</label></div><div class="option-card"><input type="radio" name="d1" value="Sur bac acier"><label>Pose sur bac acier existant</label></div><div class="option-card"><input type="radio" name="d1" value="Surimposition"><label>Surimposition sur toiture existante</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>État toiture support <span class="req">*</span></label>
+    <div class="options-grid col1"><div class="option-card"><input type="radio" name="d2" value="Bon état — pose directe"><label>Bon état — pose directe possible</label></div><div class="option-card"><input type="radio" name="d2" value="À rénover avant pose"><label>À rénover avant pose</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Nb panneaux envisagés <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 12"><div class="err" id="e-dsurf">Requis</div></div>`,
+
+  lucarne: `
+    <div class="field"><label>Type d'intervention <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d1" value="Création neuve"><label>Création neuve</label></div><div class="option-card"><input type="radio" name="d1" value="Réfection"><label>Réfection</label></div><div class="option-card"><input type="radio" name="d1" value="Étanchéité"><label>Reprise étanchéité</label></div></div>
+    <div class="err" id="e-d1">Requis</div></div>
+    <div class="field"><label>Type de lucarne <span class="req">*</span></label>
+    <div class="options-grid"><div class="option-card"><input type="radio" name="d2" value="Rampante"><label>Rampante</label></div><div class="option-card"><input type="radio" name="d2" value="Bâtière"><label>À bâtière</label></div><div class="option-card"><input type="radio" name="d2" value="Capucine"><label>Capucine</label></div><div class="option-card"><input type="radio" name="d2" value="Chien assis"><label>Chien assis</label></div></div>
+    <div class="err" id="e-d2">Requis</div></div>
+    <div class="field"><label>Nombre <span class="req">*</span></label><input type="text" id="d-surf" placeholder="ex : 2"><div class="err" id="e-dsurf">Requis</div></div>`
+};
+
+function show(n) {
+  document.querySelectorAll('[data-step]').forEach(function(el) {
+    el.hidden = true;
+  });
+  document.querySelector('[data-step="' + n + '"]').hidden = false;
+  [0,1,2,3].forEach(function(i) {
+    document.getElementById('dot' + i).classList.toggle('done', i <= n);
+  });
+  window.scrollTo(0, 0);
+}
+
+function err(id, show) {
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('show', show);
+}
+
+function goTo1() {
+  var p = document.getElementById('prenom').value.trim();
+  var n = document.getElementById('nom').value.trim();
+  var t = document.getElementById('tel').value.trim();
+  var a = document.getElementById('adresse').value.trim();
+  var v = document.getElementById('ville').value.trim();
+  var c = document.getElementById('cp').value.trim();
+  err('e-prenom', !p); err('e-nom', !n);
+  err('e-tel', !t || !/^[\d\s+.()-]{8,}$/.test(t));
+  err('e-adresse', !a); err('e-ville', !v); err('e-cp', !c);
+  if (p && n && t && a && v && c) show(1);
+}
+
+function goTo2() {
+  var sel = document.querySelector('input[name="type"]:checked');
+  err('e-type', !sel);
+  if (!sel) return;
+  selectedType = sel.value;
+  document.getElementById('details-content').innerHTML = detailsHTML[selectedType] || '';
+  // Auto-assign id/for sur tous les inputs injectés pour que les labels soient cliquables
+  document.querySelectorAll('#details-content .option-card input').forEach(function(inp, i) {
+    var uid = 'dopt' + i;
+    inp.id = uid;
+    var lbl = inp.nextElementSibling;
+    if (lbl && lbl.tagName === 'LABEL') lbl.setAttribute('for', uid);
+  });
+  document.getElementById('hint').textContent = hints[selectedType] || '';
+  show(2);
+}
+
+function goTo3() {
+  var ok = true;
+  var d1 = document.querySelector('input[name="d1"]:checked');
+  err('e-d1', !d1); if (!d1) ok = false;
+  var d2el = document.querySelector('input[name="d2"]');
+  if (d2el) { var d2 = document.querySelector('input[name="d2"]:checked'); err('e-d2', !d2); if (!d2) ok = false; }
+  var d3el = document.querySelector('input[name="d3"]');
+  if (d3el) { var d3 = document.querySelector('input[name="d3"]:checked'); err('e-d3', !d3); if (!d3) ok = false; }
+  var surf = document.getElementById('d-surf');
+  if (surf) { err('e-dsurf', !surf.value.trim()); if (!surf.value.trim()) ok = false; }
+  if (ok) show(3);
+}
+
+var files = { toit: [], devis: [] };
+var uploadedURLs = { toit: [], devis: [] };
+var uploadPromises = { toit: [], devis: [] };
+var selectedType = null;
+var couvreur = new URLSearchParams(window.location.search).get('couvreur') || 'Non renseigné';
+
+var CLOUDINARY_CLOUD = 'df2hpincz';
+var CLOUDINARY_PRESET = 'pjye9g9t';
+
+function uploadToCloudinary(file, slot, index) {
+  var fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', CLOUDINARY_PRESET);
+  var promise = fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD + '/image/upload', {
+    method: 'POST', body: fd
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.secure_url) uploadedURLs[slot][index] = data.secure_url;
+  })
+  .catch(function(e) { console.error('Cloudinary upload failed:', e); });
+  uploadPromises[slot][index] = promise;
+  return promise;
+}
+
+function addFiles(slot, fileList) {
+  Array.from(fileList).forEach(function(f) {
+    if (!files[slot].find(function(x) { return x.name === f.name; })) {
+      var index = files[slot].length;
+      files[slot].push(f);
+      uploadToCloudinary(f, slot, index);
+    }
+  });
+  renderFileList(slot);
+}
+
+function rmFile(slot, i) {
+  files[slot].splice(i, 1);
+  uploadedURLs[slot].splice(i, 1);
+  uploadPromises[slot].splice(i, 1);
+  renderFileList(slot);
+}
+
+function renderFileList(slot) {
+  document.getElementById('fl-' + slot).innerHTML = files[slot].map(function(f, i) {
+    return '<div class="file-tag">' + f.name + ' <button onclick="rmFile(\'' + slot + '\',' + i + ')">×</button></div>';
+  }).join('');
+}
+
+function submit() {
+  var ok = true;
+  var c = document.getElementById('comment').value.trim();
+  err('e-toit', files.toit.length === 0); if (!files.toit.length) ok = false;
+  err('e-devis', files.devis.length === 0); if (!files.devis.length) ok = false;
+  err('e-comment', !c); if (!c) ok = false;
+  if (!ok) return;
+
+  // Succès immédiat UI
+  document.querySelector('[data-step="3"]').hidden = true;
+  document.getElementById('progress').style.display = 'none';
+  document.getElementById('success').className = 'success show';
+  window.scrollTo(0, 0);
+
+  // Attendre fin uploads Cloudinary puis envoyer
+  var allPromises = uploadPromises.toit.concat(uploadPromises.devis).filter(Boolean);
+  Promise.all(allPromises).then(function() {
+    var payload = {
+      Couvreur:         couvreur,
+      Prénom:           document.getElementById('prenom').value.trim(),
+      Nom:              document.getElementById('nom').value.trim(),
+      Téléphone:        document.getElementById('tel').value.trim(),
+      Adresse:          document.getElementById('adresse').value.trim(),
+      Ville:            document.getElementById('ville').value.trim(),
+      'Code postal':    document.getElementById('cp').value.trim(),
+      'Type travaux':   selectedType,
+      Commentaire:      c,
+      'Photos toit':    uploadedURLs.toit.filter(Boolean).join(' | '),
+      'Photo devis':    uploadedURLs.devis.filter(Boolean).join(' | ')
+    };
+    ['d1','d2','d3'].forEach(function(n) {
+      var el = document.querySelector('input[name="' + n + '"]:checked');
+      if (el) payload['Détail ' + n] = el.value;
+    });
+    var surf = document.getElementById('d-surf');
+    if (surf && surf.value.trim()) payload['Surface / quantité'] = surf.value.trim();
+
+    var params = [];
+    Object.keys(payload).forEach(function(k) {
+      params.push(encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]));
+    });
+    var blob = new Blob([params.join('&')], { type: 'application/x-www-form-urlencoded' });
+    navigator.sendBeacon('https://formspree.io/f/xeeroddy', blob);
+  });
+}
+</script>
+</body>
+</html>
