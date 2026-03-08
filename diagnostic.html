@@ -273,25 +273,35 @@ function sub(){
   document.getElementById('suc').className='suc on';
   window.scrollTo(0,0);
 
-  var allP=P.toit.concat(P.devis).filter(Boolean);
-  Promise.all(allP).then(function(){
-    var payload={
-      Couvreur:couvreur,Prenom:v('prenom'),Nom:v('nom'),Tel:v('tel'),
-      Adresse:v('adresse'),Type:type,Commentaire:c,
-      'Photos toit':U.toit.filter(Boolean).join(' | '),
-      'Photo devis':U.devis.filter(Boolean).join(' | ')
-    };
-    ['d1','d2','d3','d4'].forEach(function(n){
-      var el=document.querySelector('#g-'+n+' .opt.on');
-      if(el)payload[n]=el.dataset.val;
-    });
-    var surf=document.getElementById('d-surf');
-    if(surf&&surf.value.trim())payload.Surface=surf.value.trim();
-    var fd=new FormData();
-    Object.keys(payload).forEach(function(k){fd.append(k,payload[k]);});
-    fetch('https://formspree.io/f/xeeroddy',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
-      .catch(function(){});
+  // Envoi Formspree IMMÉDIAT — zéro dépendance Cloudinary
+  var payload={
+    Couvreur:couvreur,Prenom:v('prenom'),Nom:v('nom'),Tel:v('tel'),
+    Adresse:v('adresse'),Type:type,Commentaire:c
+  };
+  ['d1','d2','d3','d4'].forEach(function(n){
+    var el=document.querySelector('#g-'+n+' .opt.on');
+    if(el)payload[n]=el.dataset.val;
   });
+  var surf=document.getElementById('d-surf');
+  if(surf&&surf.value.trim())payload.Surface=surf.value.trim();
+  var fd=new FormData();
+  Object.keys(payload).forEach(function(k){fd.append(k,payload[k]);});
+  fetch('https://formspree.io/f/xeeroddy',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).catch(function(){});
+
+  // Cloudinary en parallèle — envoie un 2e email avec les photos quand prêt
+  var allP=P.toit.concat(P.devis).filter(Boolean);
+  if(allP.length){
+    Promise.all(allP).then(function(){
+      var urls=U.toit.filter(Boolean).concat(U.devis.filter(Boolean));
+      if(!urls.length)return;
+      var fd2=new FormData();
+      fd2.append('Couvreur',couvreur);fd2.append('Nom',v('nom'));fd2.append('Tel',v('tel'));
+      fd2.append('Photos toit',U.toit.filter(Boolean).join(' | '));
+      fd2.append('Photo devis',U.devis.filter(Boolean).join(' | '));
+      fd2.append('_subject','Photos — '+v('prenom')+' '+v('nom'));
+      fetch('https://formspree.io/f/xeeroddy',{method:'POST',body:fd2,headers:{'Accept':'application/json'}}).catch(function(){});
+    });
+  }
 }
 </script>
 
