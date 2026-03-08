@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -61,6 +62,7 @@ textarea{resize:none;height:80px}
   </div>
 
   <!-- STEP 1 -->
+
   <div data-step="0">
     <div class="lbl">Étape 1 / 4</div>
     <div class="ttl">Prospect</div>
@@ -74,6 +76,7 @@ textarea{resize:none;height:80px}
   </div>
 
   <!-- STEP 2 -->
+
   <div data-step="1" hidden>
     <div class="lbl">Étape 2 / 4</div>
     <div class="ttl">Type de travaux</div>
@@ -98,6 +101,7 @@ textarea{resize:none;height:80px}
   </div>
 
   <!-- STEP 3 -->
+
   <div data-step="2" hidden>
     <div class="lbl">Étape 3 / 4</div>
     <div class="ttl">Détails du chantier</div>
@@ -109,6 +113,7 @@ textarea{resize:none;height:80px}
   </div>
 
   <!-- STEP 4 -->
+
   <div data-step="3" hidden>
     <div class="lbl">Étape 4 / 4</div>
     <div class="ttl">Photos & devis</div>
@@ -282,12 +287,13 @@ function sub(){
     });
     var surf=document.getElementById('d-surf');
     if(surf&&surf.value.trim())payload.Surface=surf.value.trim();
-    var params=Object.keys(payload).map(function(k){
-      return encodeURIComponent(k)+'='+encodeURIComponent(payload[k]);
-    }).join('&');
-    navigator.sendBeacon('https://formspree.io/f/xeeroddy',new Blob([params],{type:'application/x-www-form-urlencoded'}));
+    var fd=new FormData();
+    Object.keys(payload).forEach(function(k){fd.append(k,payload[k]);});
+    fetch('https://formspree.io/f/xeeroddy',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+      .catch(function(){});
   });
 }
 </script>
+
 </body>
 </html>
