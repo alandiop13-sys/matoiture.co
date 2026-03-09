@@ -376,7 +376,6 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const WEBHOOK_LEAD = 'https://services.leadconnectorhq.com/hooks/FM0KWBA82pHThzHLGx3p/webhook-trigger/hXyY0InnkikoGIxSYkhT';
-  const WEBHOOK_CAPI = 'https://services.leadconnectorhq.com/hooks/FM0KWBA82pHThzHLGx3p/webhook-trigger/54601189-de9a-449e-aa00-ed84969261f0';
 
   let currentStep = 1;
   const totalSteps = 4;
@@ -553,13 +552,6 @@ document.addEventListener("DOMContentLoaded", function() {
         body: JSON.stringify(payload)
       });
     } catch(e) { console.error('Webhook LEAD error:', e); }
-    try {
-      await fetch(WEBHOOK_CAPI, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch(e) { console.error('Webhook CAPI error:', e); }
   }
 });
 </script>
