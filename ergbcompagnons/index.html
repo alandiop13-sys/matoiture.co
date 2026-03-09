@@ -531,6 +531,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Lead', {}, { eventID: eventId });
     }
+    let clientIp = '';
+    try {
+      const ipRes = await fetch('https://api.ipify.org?format=json');
+      const ipData = await ipRes.json();
+      clientIp = ipData.ip || '';
+    } catch(e) { clientIp = ''; }
+    const userAgent = navigator.userAgent || '';
     const payload = {
       firstName:   answers.prenom,
       lastName:    answers.nom,
@@ -543,7 +550,9 @@ document.addEventListener("DOMContentLoaded", function() {
       event_id:    eventId,
       fbclid:      fbclid,
       fbp:         fbp,
-      fbc:         fbc
+      fbc:         fbc,
+      client_ip_address: clientIp,
+      client_user_agent: userAgent
     };
     try {
       await fetch(WEBHOOK_LEAD, {
