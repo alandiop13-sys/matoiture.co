@@ -139,6 +139,10 @@ src="https://www.facebook.com/tr?id=1293033036006691&ev=PageView&noscript=1"
                 <label class="field-label">Numéro de téléphone *</label>
                 <input type="tel" id="tel" name="tel" placeholder="Numéro de téléphone*" inputmode="numeric" maxlength="10">
               </div>
+              <div>
+                <label class="field-label">Email <span style="font-weight:400;color:var(--muted)">(Optionnel)</span></label>
+                <input type="email" id="email" name="email" placeholder="votre@email.fr">
+              </div>
             </div>
             <div class="error-msg" id="err4">Veuillez remplir tous les champs.</div>
           </div>
@@ -369,6 +373,7 @@ document.addEventListener("DOMContentLoaded", function() {
       answers.prenom = p;
       answers.nom = no;
       answers.tel = t;
+      answers.email = document.getElementById('email').value.trim();
       return true;
     }
     return true;
@@ -438,6 +443,7 @@ document.addEventListener("DOMContentLoaded", function() {
       firstName:   answers.prenom,
       lastName:    answers.nom,
       phone:       answers.tel,
+      email:       answers.email,
       address1:    answers.adresse,
       city:        answers.ville,
       typeTravaux: answers.q1,
